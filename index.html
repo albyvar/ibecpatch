@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>@albyvar25</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+	<h1><img src="cfw.png">Change boot disk in already patched iBECs for dualboot</h1>
+</div>
+
+<div class="container">
+	<div class="well">
+		<p><span class="text-primary"><b></span></b>This small tutorial is useful for people who already patched an iBEC for dual booting, but then need it again for a triple-multi boot </p>
+		<p><span class="text-primary"><b></span></b>Also works for coolbooter iBECs.</p>
+		
+	</div>
+</div>
+
+<div class="container">
+	<div class="well">
+		<h1>Patching</h1>
+		<p><span class="text-primary"><b></span></b>Once you got your patched iBEC, open it in any HEX editor. I use HxD on windows and iHex on macOS.</p>
+		<p><span class="text-primary"><b></span></b>You will see something like this:</p>
+		<img src="db1.png">
+		<p><span class="text-primary"><b></span></b>Now search (ctrl+f on windows or cmd+f on mac) for <b>disk0s1s3</b>:</p>
+		<p><span class="text-primary"><b></span></b>It will show you this:</p>
+		<img src="db2.png">
+		<p><span class="text-primary"><b></span></b>Now replace <b>disk0s1s3</b> with the disk you want to boot from. For example now I'll use <b>disk0s1s5</b>, meaning that my multi booted os is in the 5th partition. So my current setup is a triple boot.</p>
+		<img src="db3.png">
+		<p><span class="text-primary"><b></span></b>Now iBEC will boot the system from disk0s1s5, but will still look for ramdisk (and other files needed for dualboot) in the old partition.</p>
+		<p><span class="text-primary"><b></span></b>So, let's fix this. Search for <b>upgrade</b></p>
+		<img src="db4.png">
+		<p><span class="text-primary"><b></span></b>Make sure you found the "upgrade" near "failed to mount ... partition"</p>
+		<p><span class="text-primary"><b></span></b>You will see a "2" near it. Replace it with the index number of the multibooted os partition. It is always a number minus the one you see in disk0s1sX. For example, in my case the boot partition is disk0s1s5, so the number will be 4.</p>
+		<img src="db5.png">
+		<p><span class="text-primary"><b></span></b>Done! You can now boot the multibooted os using your freshly patched iBEC!</p>
+	</div>
+</div>	
+
+<div class="container">
+	<div class="well">
+		<h1>Thanks to</h1>
+		<p><span class="text-primary"><b></span></b>Everyone who made dual boot on iPhone possible, and @Trevor on coolbooter's discord for helping me with that.</p>
+	</div>
+</div>	
+	
+	
+</body>
+</html>
