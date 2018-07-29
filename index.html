@@ -26,18 +26,18 @@
 		<h1>Patching</h1>
 		<p><span class="text-primary"><b></span></b>Once you got your patched iBEC, open it in any HEX editor. I use HxD on windows and iHex on macOS.</p>
 		<p><span class="text-primary"><b></span></b>You will see something like this:</p>
-		<img src="db1.png">
+		<img src="https://s22.postimg.cc/rs3ibyxxd/db1.png" alt="db1">
 		<p><span class="text-primary"><b></span></b>Now search (ctrl+f on windows or cmd+f on mac) for <b>disk0s1s3</b>:</p>
 		<p><span class="text-primary"><b></span></b>It will show you this:</p>
-		<img src="db2.png">
+		<img src="https://s22.postimg.cc/gh0un4ls1/db2.png" alt="db2">
 		<p><span class="text-primary"><b></span></b>Now replace <b>disk0s1s3</b> with the disk you want to boot from. For example now I'll use <b>disk0s1s5</b>, meaning that my multi booted os is in the 5th partition. So my current setup is a triple boot.</p>
-		<img src="db3.png">
+		<img src="https://s22.postimg.cc/wf9kdb5q9/db3.png" alt="db3">
 		<p><span class="text-primary"><b></span></b>Now iBEC will boot the system from disk0s1s5, but will still look for ramdisk (and other files needed for dualboot) in the old partition.</p>
 		<p><span class="text-primary"><b></span></b>So, let's fix this. Search for <b>upgrade</b></p>
-		<img src="db4.png">
+		<img src="https://s22.postimg.cc/bv4qev7zl/db4.png" alt="db4">
 		<p><span class="text-primary"><b></span></b>Make sure you found the "upgrade" near "failed to mount ... partition"</p>
 		<p><span class="text-primary"><b></span></b>You will see a "2" near it. Replace it with the index number of the multibooted os partition. It is always a number minus the one you see in disk0s1sX. For example, in my case the boot partition is disk0s1s5, so the number will be 4.</p>
-		<img src="db5.png">
+		<img src="https://s22.postimg.cc/bv4qewxpt/db5.png" alt="db5">
 		<p><span class="text-primary"><b></span></b>Done! You can now boot the multibooted os using your freshly patched iBEC!</p>
 	</div>
 </div>	
